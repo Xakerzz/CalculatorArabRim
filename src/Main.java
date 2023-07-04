@@ -21,6 +21,8 @@ public class Main {
         String operation = "";
         String operandFirst = inputUser[0];
         String operandSecond = inputUser[2];
+        int numbFirst = 0;
+        int numbSecond = 0;
         boolean isOperandFirstDigit = true;
         boolean isOperandSecondIDigit = true;
 
@@ -43,8 +45,17 @@ public class Main {
         }
 
         if(isOperandFirstDigit && isOperandSecondIDigit) {
-            int numbFirst = Integer.parseInt(operandFirst);
-            int numbSecond = Integer.parseInt(operandSecond);
+            numbFirst = Integer.parseInt(operandFirst);
+            numbSecond = Integer.parseInt(operandSecond);
+            if (numbFirst < 1) {
+                throw new RuntimeException("Принимаются числа только от 1 до 10 включительно");
+            } else if (numbFirst > 10) {
+                throw new RuntimeException("Принимаются числа только от 1 до 10 включительно");
+            } else if (numbSecond < 1) {
+                throw new RuntimeException("Принимаются числа только от 1 до 10 включительно");
+            } else if (numbSecond > 10) {
+                throw new RuntimeException("Принимаются числа только от 1 до 10 включительно");
+            }
             if(numbFirst <= 10 && numbSecond <= 10) {
                 switch (operation) {
                     case "+" : result = numbFirst + numbSecond;
@@ -66,10 +77,9 @@ public class Main {
         } else {
             String rimDigit [] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 
+
             if(Arrays.asList(rimDigit).contains(operandFirst) && Arrays.asList(rimDigit).contains(operandSecond)) {
                 String rimNumbs [] = {operandFirst, operandSecond};
-                int numbFirst = 0;
-                int numbSecond = 0;
                 for (int i = 0; i < rimNumbs.length; i++) {
                     switch (rimNumbs[i]) {
                         case "I" : if(i == 0) {
@@ -132,10 +142,13 @@ public class Main {
                             numbSecond = 10;
                         }
                             break;
+
                     }
 
-
                 }
+
+
+
                 switch (operation) {
                     case "+" : result = numbFirst + numbSecond;
                         break;
@@ -152,9 +165,23 @@ public class Main {
                             break;
                 }
 
-            } else {
+            } else  {
+                String rimDigits[] = {"XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+                        "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX",
+                        "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
+                        "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L",
+                        "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX",
+                        "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX",
+                        "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX",
+                        "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
+                        "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"
+                };
+                if(Arrays.asList(rimDigits).contains(operandFirst) && Arrays.asList(rimDigits).contains(operandSecond)) {
+                    throw new RuntimeException("Принимаются числа только от 1 до 10 включительно");
+                }
 
-                throw new RuntimeException("используются одновременно разные системы счисления");
+                    throw new RuntimeException("используются одновременно разные системы исчисления");
+
             }
         }
 
